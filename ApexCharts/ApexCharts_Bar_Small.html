@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<body>
+    <script>
+        var start = new Date().getTime();
+    </script>
+    <div id="chart"></div>
+    <script>
+        var options = {
+            chart: {
+                type: 'bar'
+            },
+            series: [{
+                name: 'melodifestivalen: (2020-03-02–2021-03-02)',
+                data: [100,90,87,85,81,81,80,80,79,79,78,77,75,75,73,71,71,69,64,64,60]
+            }],
+            xaxis: {
+                categories: ["Blekinge län","Dalarnas län","Uppsala län","Kalmar län","Kronobergs län","Jämtlands län","Västra Götalands län","Värmlands län","Örebro län","Hallands län","Jönköpings län","Västmanlands län","Västernorrlands län","Östergötlands län","Gävleborgs län","Södermanlands län","Stockholms län","Västerbottens län","Skåne län","Norrbottens län","Gotlands län"]
+            }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+        chart.render();
+        var elapsed = new Date().getTime() - start;
+        console.log(elapsed);
+    </script>
+</body>
