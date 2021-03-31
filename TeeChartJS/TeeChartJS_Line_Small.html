@@ -18,7 +18,7 @@
             function draw() {
                 Chart1=new Tee.Chart("canvas");
                 $.getJSON('./dataSmall.json', function(response) {
-                    Chart1.addSeries(new Tee.Bar(response.y));
+                    Chart1.addSeries(new Tee.Line(response.y));
                     Chart1.draw();
                     
                 });
