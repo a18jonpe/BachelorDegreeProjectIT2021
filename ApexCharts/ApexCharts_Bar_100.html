@@ -8,11 +8,14 @@
     <body>
         <div id="chart"></div>
         <script>
-            $.getJSON('./dataSmall.json', function(response) {
+            $.getJSON('./data100.json', function(response) {
                 var options = {
                     chart: {
                         type: 'bar',
-                        height: 500
+                        height: 500,
+                        animations: {
+                            enabled: false
+                        }
                     },
                     noData: {
                         text: 'Loading...'
