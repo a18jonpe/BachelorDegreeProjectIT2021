@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script>
-            console.time("fromBeginning");
-        </script>
         <meta charset="UTF-8"/>
         <script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.2.4/dist/frappe-charts.min.iife.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -11,31 +8,19 @@
     <body>
         <div id="chart"></div>
         <script>
-            const data = {
-                labels: [],
-                datasets: [
-                    {
-                        name: "", type: "",
-                        values: []
-                    }
-                ]
-            }
-            const chart = new frappe.Chart("#chart", {
-                title: "",
-                data: data,
-                type: 'bar',
-                height: 350
-            },)
-
             $.getJSON('./data5k.json', function(response) {
-                //TODO: Change path
-                const newData = {
+                const data = {
                     labels: response.x,
                     datasets: [{name: "", type: "bar", values: response.y}]
                 }
-                chart.update(newData)
+                const chart = new frappe.Chart("#chart", {
+                    title: "Rain (mm)",
+                    data: data,
+                    type: 'bar',
+                    height: 500,
+                    animate: false
+                },)
             });
-            console.timeEnd("fromBeginning");
         </script>
     </body>
 </html>
