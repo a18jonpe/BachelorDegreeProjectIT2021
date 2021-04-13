@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.2.4/dist/frappe-charts.min.iife.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div style="text-align:center">Frappe Charts</div>
+        <div id="chart"></div>
+        <script>
+            $.getJSON('./data27k.json', function(response) {
+                const data = {
+                    labels: response.x,
+                    datasets: [{name: "", type: "bar", values: response.y}]
+                }
+                const chart = new frappe.Chart("#chart", {
+                    title: "Rain (mm)",
+                    data: data,
+                    type: 'bar',
+                    height: 500,
+                    animate: false
+                },)
+            });
+        </script>
+    </body>
+</html>
