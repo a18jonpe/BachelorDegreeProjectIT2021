@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div style="text-align:center">ApexCharts</div>
+        <div id="chart"></div>
+        <script>
+            $.getJSON('./data20k.json', function(response) {
+                var options = {
+                    chart: {
+                        type: 'line',
+                        height: 500,
+                        animations: {
+                            enabled: false
+                        }
+                    },
+                    noData: {
+                        text: 'Loading...'
+                    },
+                    series: [{
+                        name: 'Rain (mm)',
+                        data: response
+                    }],
+                    xaxis: {
+                        type: 'category',
+                        tickPlacement: 'on',
+                        tickAmount: response.length/50,
+                        labels: {
+                            rotate: -45,
+                            rotateAlways: true,
+                            style: {
+                                fontSize: '10px',
+                            }
+                        }
+                    },
+                    dataLabels: {
+                        enabled: false,
+                    },
+                    bar: {
+                        horizontal: false
+                    }
+                }
+
+                var chart = new ApexCharts(document.querySelector("#chart"), options);
+                chart.render();
+            });
+        </script>
+    </body>
+</html>
